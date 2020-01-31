@@ -1,0 +1,19 @@
+_site/
+.jekyll-metadata
+.vscode/
+
+# Logs
+logs
+*.log
+
+# Optional npm cache directory
+.npm
+
+# Output of 'npm pack'
+*.tgz
+
+# dotenv environment variables file
+.env
+
+# next.js build output
+.next
