@@ -1,6 +1,7 @@
 _site/
 .jekyll-metadata
 .vscode/
+Gemfile.lock
 
 # Logs
 logs
