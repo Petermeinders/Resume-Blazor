@@ -287,19 +287,19 @@ a.card-header-link {
 }
 
 .overview-card {
-
+    padding-left: 0px;
 }
 
 .knowledge-card {
-
+    padding-left: 0px;
 }
 
 .info-card {
-
+    padding-left: 0px;
 }
 
 .exp-card {
-	
+	    padding-left: 0px;
 }
 
   @media only screen and (max-width: 768px) {
