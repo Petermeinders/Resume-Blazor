@@ -44,17 +44,13 @@ p {
 	margin-top: 30px;
 }
 
-.left-col {
-	margin-left: 50px;
-	margin-right: 60px;
-	display: block !important;
-}
 
-.left-col {
+
+/* .left-col {
 	margin-left: 50px;
 	margin-right: 30px;
 	display: none;
-}
+} */
 
 .main-side-navigation-section {
 	display: none;
@@ -69,7 +65,7 @@ li {
 	text-align: -webkit-match-parent;
 }
 
-a {
+.menu-link {
 	text-decoration-color: initial;
 	color: #fff;
 	border-left-color: transparent;
@@ -134,6 +130,10 @@ a {
 		padding-bottom:10px;
 }
 
+.label {
+	white-space: normal;
+}
+
 .btnGithub:hover {
     border-color: #00aeff;
 	color: #fff;
@@ -188,8 +188,17 @@ li:not(.active):hover a {
 float:right;
 }
 
-.account-overview .overview-card {
+.account-overview {
 	margin-top: 30px;
+}
+
+
+.Navbar-siteMenuIcon {
+	float:left;
+	
+}
+.Navbar-profileIcon {
+	float:right;
 }
 
 .card {
@@ -210,7 +219,7 @@ float:right;
 a.card-header-link {
 	font-size: 14px;
 	color: #00aeff;
-	white-space: nowrap;
+
 }
 
 .circule{
@@ -228,30 +237,128 @@ a.card-header-link {
 	border-color: #878787;
     border-width: 2px;
     border-style: solid;
-  }
+}
 
-  .green-color{
-	  color:#01ba01;
-  }
+.green-color{
+	color:#01ba01;
+}
+
+.Navbar-mobile {
+	background-color: black;
+	min-height: 39px;
+	background-color: #0b0d12;
+    background: #0b0d12;
+    border-bottom: none;
+}
+
+.Navbar-logo {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 48px;
+   
+    background-size: auto 28px;
+    -webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+.gradient-text {
+	/* standard gradient background */
+	background: linear-gradient(#00aeff, #0062a2);
+  
+	/* clip hackery */
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+  .header-name {
+	margin:0px;
+}
+
+.Navbar-container {
+	margin-bottom: 50px;
+	/* position: fixed;
+	top: 0;
+	width: 100%; */
+}
+
+.hamburger {
+	display: none !important;
+}
+
+.overview-card {
+
+}
+
+.knowledge-card {
+
+}
+
+.info-card {
+
+}
+
+.exp-card {
+	
+}
 
   @media only screen and (max-width: 768px) {
 	.text-align-center {
 		text-align: center !important;
 	}
+
+	.header-name {
+		font-size: 150%;
+	}
 }
 
-@media only screen and (max-width: 1080px) {
-	.card {
-		margin-left: 50px;
-		margin-right: 50px;
+
+@media only screen and (max-width: 1200px) {
+
+	.overview-card {
+		margin-bottom: 30px;
+		}
+		
+	.info-card {
+		margin-bottom: 30px;
 	}
+
+
 }
 
 @media only screen and (min-width: 1080px) {
 	.main-side-navigation-section {
 		display: block !important;
 	}
+
+	.left-col {
+		margin-left: 50px;
+		margin-right: 60px;
+		display: block !important;
+	}
+
+
 }
+
+@media only screen and (max-width: 1080px) {
+	.card {
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+
+	.left-col {
+		margin-left: 50px;
+		margin-right: 50px;
+		display: none !important;
+	}
+
+	.hamburger {
+		display: inline-block !important;
+	}
+
+
+}
+
 
 @media only screen and (min-width: 961px) {
 	.card {
@@ -282,5 +389,13 @@ a.card-header-link {
 {
 	.main-container {
 		padding: 60px 200px 0;
+	}
+}
+
+@media (max-width: 767px)
+{
+	body {
+		padding-left: 0px;
+		padding-right: 0px;
 	}
 }
