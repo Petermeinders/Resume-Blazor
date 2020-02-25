@@ -66,6 +66,10 @@ li {
 	text-align: -webkit-match-parent;
 }
 
+.main-column {
+	padding-left:0px;
+}
+
 .menu-link {
 	text-decoration-color: initial;
 	color: #fff;
@@ -120,7 +124,7 @@ li {
     color: #fff;
     white-space: nowrap;
     border-width: 1px;
-    
+
     padding-left: 30px;
     padding-right: 30px;
     text-overflow: ellipsis;
@@ -196,7 +200,7 @@ float:right;
 
 .Navbar-siteMenuIcon {
 	float:left;
-	
+
 }
 .Navbar-profileIcon {
 	float:right;
@@ -257,7 +261,7 @@ a.card-header-link {
     top: 0;
     left: 50%;
     height: 48px;
-   
+
     background-size: auto 28px;
     -webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
@@ -266,7 +270,7 @@ a.card-header-link {
 .Footer-text {
     position: absolute;
     left: 50%;
-   
+
     -webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
 }
@@ -274,7 +278,7 @@ a.card-header-link {
 .gradient-text {
 	/* standard gradient background */
 	background: linear-gradient(#00aeff, #0062a2);
-  
+
 	/* clip hackery */
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -319,6 +323,11 @@ a.card-header-link {
 	.header-name {
 		font-size: 150%;
 	}
+
+	.Navbar-container {
+		margin-left: -20px;
+		margin-right: -20px;
+	}
 }
 
 
@@ -327,7 +336,7 @@ a.card-header-link {
 	.overview-card {
 		margin-bottom: 30px;
 		}
-		
+
 	.info-card {
 		margin-bottom: 30px;
 	}
@@ -402,18 +411,44 @@ a.card-header-link {
 	}
 }
 
-@media (max-width: 767px)
+/* @media (max-width: 767px)
 {
 	body {
 		padding-left: 0px;
 		padding-right: 0px;
+	}
+} */
+
+@media only screen and (min-width: 768px) and (max-width: 1080px){
+	.main-column{
+		padding-left:20px;
+	}
+
+	.overview-card {
+		padding-right:0px;
+		padding-left:15px;
+	}
+
+	.knowledge-card {
+		padding-right: 0px;
+		padding-left:15px;
+	}
+	
+	.info-card {
+		padding-right: 0px;
+		padding-left:15px;
+	}
+
+	.exp-card {
+		padding-right: 0px;
+		padding-left:15px;
 	}
 }
 
 /* @media only screen and (min-width: 576px) and (max-width: 1600px){
 	.main-container{
 		padding-right:20px;
-	
+
 	}
 } */
 
