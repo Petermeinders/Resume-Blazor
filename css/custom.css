@@ -88,7 +88,7 @@ li {
 	color: rgba(107, 184, 224, 0.6);
 	margin-right: 15px;
 	vertical-align: middle;
-	min-width: 20px;
+
 	display: inline-block;
 }
 
@@ -99,6 +99,11 @@ li {
 	vertical-align: middle;
 	min-width: 20px;
 	box-sizing: border-box;
+}
+
+.fa-lightbulb-o {
+	margin-right: 4px;
+    margin-left: 4px;
 }
 
 .nav {
@@ -290,9 +295,14 @@ a.card-header-link {
 
 .Navbar-container {
 	margin-bottom: 50px;
-	/* position: fixed;
+	position: fixed;
 	top: 0;
-	width: 100%; */
+	width: 100%;
+	z-index: 99;
+}
+
+.section-page {
+	margin-top: 100px;
 }
 
 .hamburger {
@@ -314,6 +324,63 @@ a.card-header-link {
 .exp-card {
 	    padding-left: 0px;
 }
+
+/* SLIDE OUT NAVIGATION BAR */
+
+.sidenav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #111;
+	overflow-x: hidden;
+	transition: 0.3s;
+	padding-top: 60px;
+	z-index: 110;
+  }
+  
+  .sidenav a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+	white-space: nowrap;
+  }
+  
+  .sidenav a:hover {
+	color: #f1f1f1;
+  }
+  
+  .navbar-overlay-page {
+	display: block;
+	background-color: rgba(0,0,0,.5);
+    /* background-color: blue; */
+	
+    position: absolute;
+    width: 10000px;
+	height: 10000px;
+	z-index: 100;
+    margin: -100px;
+  }
+
+
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    left: -23px;
+    font-size: 36px;
+  }
+  
+  @media screen and (max-height: 450px) {
+	.sidenav {padding-top: 15px;}
+	.sidenav a {font-size: 18px;}
+  }
+
+
 
   @media only screen and (max-width: 768px) {
 	.text-align-center {
@@ -354,8 +421,6 @@ a.card-header-link {
 		margin-right: 60px;
 		display: block !important;
 	}
-
-
 }
 
 @media only screen and (max-width: 1080px) {
@@ -373,11 +438,7 @@ a.card-header-link {
 	.hamburger {
 		display: inline-block !important;
 	}
-
-
-
 }
-
 
 @media only screen and (min-width: 961px) {
 	.card {

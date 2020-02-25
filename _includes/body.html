@@ -1,4 +1,11 @@
 
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="/"><i class="fa fa-home"></i> Overview</a>
+    <a href="/knowledge"><i class="fa fa-lightbulb-o"></i> Knowledge</a>
+    <a href="/experience"><i class="fa fa-flask"></i> Experience</a>
+  </div>
+
 
 
 <div class="container-fluid main-container">
@@ -8,7 +15,7 @@
                 <ul class="nav">
                     <li>
                         <a href="/" class="menu-link">
-                            <span class="icon"><i class="icon-dashboard menu-icons"></i>Overview</span>
+                            <span class="icon"><i class="fa fa-home menu-icons"></i>Overview</span>
                         </a>
                     </li>
 
@@ -22,7 +29,7 @@
 
                     <li>
                         <a href="/experience"  class="menu-link">
-                            <span class="icon"><i class="icon-beaker menu-icons"></i>Experience</span>
+                            <span class="icon"><i class="fa fa-flask menu-icons"></i> Experience</span>
                         </a>
                     </li>
 
@@ -109,7 +116,7 @@
                                         Location
                                     </div>
                                     <div class="col-12 col-md-8"><span>
-                                Ga
+                                Georgia
                             </span></div>
                                 </div>
                                 <div class="row mt-3 mt-md-3">
@@ -168,3 +175,17 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.querySelector(".navbar-overlay-page").style.display = "none";
+
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.querySelector(".navbar-overlay-page").style.display = "block";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.querySelector(".navbar-overlay-page").style.display = "none";
+    }
+</script>

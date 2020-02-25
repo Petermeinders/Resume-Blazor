@@ -23,13 +23,22 @@
   <body style="background-image: url('/background.jpg');  background-repeat: no-repeat; background-size: cover;">
     <div class="wrapper;" >
 
+        
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="/"><i class="fa fa-home"></i> Overview</a>
+    <a href="/knowledge"><i class="fa fa-lightbulb-o"></i> Knowledge</a>
+    <a href="/experience"><i class="fa fa-flask"></i> Experience</a>
+  </div>
+
+
 
         <div class="Navbar-container">
             <nav class="Navbar-mobile">
                 <div class="Navbar-mobileOverlay Navbar-overlay"></div>
                 <a data-target="Navbar-siteMenu" data-site-mode="true" class="Navbar-menu Navbar-modalToggle is-noSelect is-active">
                     <span class="Navbar-icon Navbar-mobileIcon Navbar-siteMenuIcon">
-                        <i class="fa-bars icon-2x hamburger" style="color:#069; margin:5px;"></i>
+                        <i class="fa-bars icon-2x hamburger" style="color:#069; margin:5px; cursor:pointer" onclick="openNav()"></i>
                     </span>
                 </a>
                 <a href="/" class="Navbar-logo">
@@ -45,7 +54,7 @@
             </nav>
         </div>
 
-      <section>
+      <section class="section-page">
 
       <div class="main-section">
       <div class="container-fluid main-container" >
@@ -143,4 +152,16 @@
 </html>
 
 
+<script>
+    document.querySelector(".navbar-overlay-page").style.display = "none";
 
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.querySelector(".navbar-overlay-page").style.display = "block";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.querySelector(".navbar-overlay-page").style.display = "none";
+    }
+</script>

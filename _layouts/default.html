@@ -21,15 +21,15 @@
   <body style="background-image: url('/background.jpg');  background-repeat: no-repeat; background-size: cover;">
     <div class="wrapper;" >
       <header {% unless site.description or site.github.project_tagline %} class="without-description" {% endunless %}>
-       
+        <div class="navbar-overlay-page"></div>
         {% include head.html %}
 
         <div class="Navbar-container">
           <nav class="Navbar-mobile">
               <div class="Navbar-mobileOverlay Navbar-overlay"></div>
               <a data-target="Navbar-siteMenu" data-site-mode="true" class="Navbar-menu Navbar-modalToggle is-noSelect is-active">
-                  <span class="Navbar-icon Navbar-mobileIcon Navbar-siteMenuIcon">
-                      <i class="fa-bars icon-2x hamburger" style="color:#069; margin:5px;"></i>
+                  <span class="Navbar-icon Navbar-mobileIcon Navbar-siteMenuIcon" ></span>
+                      <i class="fa-bars icon-2x hamburger" style="color:#069; margin:5px; cursor:pointer" onclick="openNav()"></i>
                   </span>
               </a>
               <a href="/" class="Navbar-logo" data-analytics="global-nav">
@@ -44,9 +44,11 @@
               </span>
           </nav>
       </div>
+
+      
     
       </header>
-      <section>
+      <section class="section-page">
 
       <div class="main-section">
       {% include body.html %}
