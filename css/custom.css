@@ -263,6 +263,14 @@ a.card-header-link {
 	transform: translateX(-50%);
 }
 
+.Footer-text {
+    position: absolute;
+    left: 50%;
+   
+    -webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
 .gradient-text {
 	/* standard gradient background */
 	background: linear-gradient(#00aeff, #0062a2);
@@ -401,3 +409,11 @@ a.card-header-link {
 		padding-right: 0px;
 	}
 }
+
+/* @media only screen and (min-width: 576px) and (max-width: 1600px){
+	.main-container{
+		padding-right:20px;
+	
+	}
+} */
+
