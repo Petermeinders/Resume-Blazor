@@ -89,6 +89,14 @@ li {
 	cursor: pointer;
 }
 
+ /* a:visited, .menu-link:visited {
+background:#0174b7 !important;
+} */
+
+#overview #menu .overview, #knowledge #menu .knowledge, #experience #menu .experience {
+	background:rgba(0,174,255,.4);
+  }
+
 .menu-icons {
 	color: rgba(107, 184, 224, 0.6);
 	margin-right: 15px;
@@ -477,7 +485,7 @@ a.card-header-link {
 @media only screen and (min-width: 1601px)
 {
 	.main-container {
-		padding: 60px 200px 0;
+		padding: 20px 200px 0;
 	}
 }
 
