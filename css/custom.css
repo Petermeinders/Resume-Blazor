@@ -14,9 +14,13 @@ h4 {
 }
 
 
+.bg-info {
+	background-color: #1b548040 !important;
+}
 
-
-
+.table-color {
+	background-color: #1b548040 !important;
+}
 
 body {
 	font-family: Open Sans, Helvetica, Arial, sans-serif;
@@ -27,6 +31,7 @@ h1,
 h2 {
 	color: #fff;
 	text-transform: uppercase;
+	font-weight: bold;
 }
 
 h3 {
@@ -35,7 +40,7 @@ h3 {
 }
 
 p {
-	color: hsla(0, 0%, 100%, .7)!important;
+	color: hsla(0, 0%, 100%, .7);
 }
 
 .label {
@@ -73,6 +78,7 @@ li {
 
 .main-column {
 	padding-left:0px;
+	padding-right:0px;
 }
 
 .menu-link {
@@ -320,7 +326,7 @@ a.card-header-link {
 }
 
 .section-page {
-	margin-top: 100px;
+	margin-top: 10px;
 }
 
 .hamburger {
@@ -328,19 +334,24 @@ a.card-header-link {
 }
 
 .overview-card {
-    padding-left: 0px;
+	padding-right:0px;
+
+	
 }
 
 .knowledge-card {
-    padding-left: 0px;
+	padding-right:0px;
+
 }
 
 .info-card {
-    padding-left: 0px;
+	padding-right:0px;
+
 }
 
 .exp-card {
-	    padding-left: 0px;
+	padding-right:0px;
+
 }
 
 /* SLIDE OUT NAVIGATION BAR */
@@ -420,10 +431,27 @@ a.card-header-link {
 
 	.overview-card {
 		margin-bottom: 30px;
+		padding-right:0px;
+		padding-left:0px;
 		}
 
 	.info-card {
 		margin-bottom: 30px;
+		padding-right:0px;
+		padding-left:0px;
+
+	}
+	.knowledge-card {
+		padding-right:0px;
+		padding-left:0px;
+	
+	}
+
+	
+	.exp-card {
+		padding-right:0px;
+		padding-left:0px;
+	
 	}
 
 
@@ -498,35 +526,26 @@ a.card-header-link {
 } */
 
 @media only screen and (min-width: 768px) and (max-width: 1080px){
-	.main-column{
-		padding-left:20px;
-	}
+
 
 	.overview-card {
 		padding-right:0px;
-		padding-left:15px;
+		padding-left:0px;
+		
 	}
 
 	.knowledge-card {
-		padding-right: 0px;
-		padding-left:15px;
+		padding-right:0px;
+		padding-left:0px;
 	}
 	
 	.info-card {
-		padding-right: 0px;
-		padding-left:15px;
+		padding-right:0px;
+		padding-left:0px;
 	}
 
 	.exp-card {
-		padding-right: 0px;
-		padding-left:15px;
+		padding-right:0px;
+		padding-left:0px;
 	}
 }
-
-/* @media only screen and (min-width: 576px) and (max-width: 1600px){
-	.main-container{
-		padding-right:20px;
-
-	}
-} */
-
