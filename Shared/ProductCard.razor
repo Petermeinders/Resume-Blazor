@@ -1,0 +1,68 @@
+<a class="card" href="#!">
+        <div class="front">
+            <div class="@(Card.Summary.ToLower().Contains("freezing") ? "img img1 freezing" : 
+                        Card.Summary.ToLower().Contains("bracing") ? "img img1 bracing" : 
+                         Card.Summary.ToLower().Contains("balmy") ? "img img1 balmy" :
+                          Card.Summary.ToLower().Contains("chilly") ? "img img1 chilly" :
+                          "img img1")">
+
+                        </div>
+            <div class="card-info">
+                <div class="card-front-header-text">@Card.Date.DayOfWeek <span>@Card.TemperatureF °F</span> </div>
+                <div class="card-front-text">@Card.Summary</div>
+            </div>
+        </div>
+        <div class="back">
+            <div class="info">
+                <div class="card-front-header-text">At a glance</div>
+                    <div class="reviews">
+                        <svg fill="#FFC324" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                        <svg fill="#FFC324" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                        <svg fill="#FFC324" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                        <svg fill="#FFC324" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                        <svg fill="#FFC324" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <defs><path d="M0 0h24v24H0V0z" id="a"/></defs><clipPath id="b"><use overflow="visible" xlink:href="#a"/></clipPath><path clip-path="url(#b)" d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4V6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>
+                        </svg>
+                        <p>23 Reviews</p>
+                    </div>
+                <ul style="padding-left: 20px;">
+                    <li>Weather Info 1</li>
+                    <li>Weather Info 2</li>
+                    <li>Weather Info 3</li>
+                </ul>
+                <div class="btn">
+                    <h4>Learn More</h4>
+                    <div>></div>
+                </div>
+            </div>
+        </div>
+    </a>
+
+            @* if (card.Summary.Contains("sunny"))
+        {
+            https://source.unsplash.com/GFFGe2eGmiM/300x403
+        } *@
+
+        <style>
+    .front .img {
+        background-image: url(//source.unsplash.com/GFFGe2eGmiM/300x403);
+    }
+
+    .freezing {
+        background-image: url(http://source.unsplash.com/9KzKfzOi7Vw/300x403) !important;
+    }
+        .bracing {
+        background-image: url(//source.unsplash.com/JuAplYoSGRw/300x403) !important;
+    }
+        .balmy {
+        background-image: url(//source.unsplash.com/ohh8ROaQSJg/300x403) !important;
+    }
+        .chilly {
+        background-image: url(//source.unsplash.com/U5rMrSI7Pn4/300x403) !important;
+    }
+</style>
+
+    @code{
+    [Parameter] 
+    public ProductCardModel Card {get;set; }
+    }
