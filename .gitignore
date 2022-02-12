@@ -1,4 +1,5 @@
 bin/
 obj/
+_framework/
 .vs/
 *.csproj.user
