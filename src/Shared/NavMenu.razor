@@ -1,0 +1,81 @@
+﻿<div class="top-row navbar navbar-dark">
+    <a class="navbar-brand" href="">Resume</a>
+    @* <button class="navbar-toggler" @onclick="ToggleNavMenu" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button> *@
+
+    <div class="nav-link mobile-only" @onclick="()=>expandSubNav = !expandSubNav">
+        <span class="navbar-toggler-icon"></span>
+    </div>  
+</div>
+
+@if (expandSubNav)
+{
+    <div class="mobile-only">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    <span class="oi oi-home" aria-hidden="true"></span> Home
+                </NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link" href="experience">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Experience
+                </NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link" href="knowledge">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Knowledge
+                </NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link" href="fetchdata">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+                </NavLink>
+            </li>
+        </ul>
+    </div>
+
+}
+
+<div class="desktop-only" @onclick="ToggleNavMenu">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    <span class="oi oi-home" aria-hidden="true"></span> Home
+                </NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link" href="experience">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Experience
+                </NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link" href="knowledge">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Knowledge
+                </NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link" href="fetchdata">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+                </NavLink>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+@code {
+    private bool collapseNavMenu = false;
+    private bool expandSubNav = false;
+
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}
