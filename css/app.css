@@ -14,7 +14,7 @@ a, .btn-link {
     border-color: #1861ac;
 }
 
-app {
+#app {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -41,10 +41,10 @@ app {
             margin-left: 1.5rem;
         }
 
-.main .top-row a:first-child {
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+        .main .top-row a:first-child {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
 .sidebar {
     background-image: linear-gradient(180deg, rgb(0 69 117) 0%, #00112f 70%);
@@ -79,7 +79,6 @@ app {
 
         .sidebar .nav-item a {
             color: #d7d7d7;
-            
             height: 3rem;
             display: flex;
             align-items: center;
@@ -128,12 +127,12 @@ app {
     z-index: 1000;
 }
 
-#blazor-error-ui .dismiss {
-    cursor: pointer;
-    position: absolute;
-    right: 0.75rem;
-    top: 0.5rem;
-}
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }
 
 @media (max-width: 767.98px) {
     .main .top-row:not(.auth) {
@@ -148,18 +147,17 @@ app {
         margin-left: 0;
     }
 
-        .desktop-only {
-        display: none;   
-       }
-
+    .desktop-only {
+        display: none;
+    }
 }
 
 @media (min-width: 768px) {
-    app {
+    #app {
         flex-direction: row;
     }
 
-    .mobile-only{
+    .mobile-only {
         display: none;
     }
 
@@ -190,10 +188,8 @@ app {
     }
 
     .mobile-only {
-     display: none;   
+        display: none;
     }
-
-
 }
 
 /* -------------- TABLE ------------ */
@@ -205,31 +201,3 @@ app {
     vertical-align: bottom;
     border-bottom: 2px solid #80a8d100;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
