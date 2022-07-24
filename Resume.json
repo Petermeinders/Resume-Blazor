@@ -1,0 +1,131 @@
+﻿{
+
+  "ExperienceModel": [
+    {
+      "Header": "Sr. Systems Engineer",
+      "SubHeader": "Shaw Industries  |  2020 - PRESENT",
+      "CompanyName": "",
+      "StartDate": "",
+      "EndDate": "",
+      "BulletPoints": [
+        "Led a team in maintaining and improving 2 large eCommerce web applications.",
+        "Oversaw a successful transition when losing 20+ developers including the team's lead engineer.",
+        "Updated and performed production code turnovers through AWS and Github.",
+        "Improved redundancy in our production environment with Azure Indexes.",
+        "Maintained backend .Net MVC code while working in tandem with the frontend team on React and Vue changes."
+      ]
+    },
+    {
+      "Header": "Systems Engineer",
+      "SubHeader": "Shaw Industries |  2017 - 2020",
+      "CompanyName": "",
+      "StartDate": "",
+      "EndDate": "",
+      "BulletPoints": [
+        "Built custom Azure Functions that integrate a live chat system  and custom company applications to receive up-to-date product information.",
+        "Developed and updated ServiceNow logic workflows with custom Powershell scripts and REST API calls based on rapidly changing industry demands.",
+        "Designed API’s in our web application to interface with other company software."
+
+      ]
+    },
+    {
+      "Header": "IT Specialist and Jr. Developer",
+      "SubHeader": "InventureIT |  2014 - 2017",
+      "CompanyName": "",
+      "StartDate": "",
+      "EndDate": "",
+      "BulletPoints": [
+        "Served as System Administrator for 20+ clients with remote and onsite support.",
+        "Implemented and serviced full scale IT support for business class PC’s, networks, servers, and miscellaneous hardware and software.",
+        "Created, maintained, and supported 20+ wordpress websites.",
+        "Handled security, backups, and malware prevention systems.",
+        "Added a QR reading feature to an android LiftTruck tracking application.",
+        "Wrote a VBA/Excel based sports field calculation software that rendered an accurately scaled layout of the field that the sales team would show potential customers.",
+        "Developed numerous code fixes and features in our EMR software for both the windows application, and web based portal using Winforms and WPF."
+      ]
+    }
+  ],
+  "ContactModel": {
+    "Email": "petermeinder@gmail.com",
+    "Location": "Rossville, Ga",
+    "Phone": "(706) 623 7678",
+    "website": "PeterMeinders.com",
+    "GithubLink": "https://github.com/Petermeinders",
+    "LinkedInProfile": "https://www.linkedin.com/in/peter-meinders-a5129b82/"
+  },
+  "EducationModel": {
+    "SchoolName": "Southern Polytechnic State University",
+    "Degree": "B.S. in Information Technology",
+    "GraduationDate": "2014",
+    "Location": "Marietta, Ga"
+  },
+  "SkillsModel": {
+    "Skills": [
+      "ASP.NET",
+      "Blazor",
+      "C#(Winforms MVC .Net Core)",
+      "CSS",
+      "Entity",
+      "Framework",
+      "HTML",
+      "JSON",
+      "Java",
+      "JS",
+      "LINQ",
+      "Lucene",
+      "CSS",
+      "Powershell",
+      "React",
+      "REST",
+      "SQL",
+      "Svelte",
+      "Typescript",
+      "VBA",
+      "Vue",
+      "WPF",
+      "Webforms",
+      "XAML",
+      "XML"
+    ],
+    "Tools": [
+      "Visual Studio 2013-2022",
+      "VSCode",
+      "Kentico",
+      "IIS",
+      "Postman",
+      "AWS",
+      "Elastic",
+      "BeanStalk",
+      "Github",
+      "Github Actions",
+      "Azure",
+      "ServiceNow",
+      "cPanel",
+      "Vmware/Virtualbox/HyperV",
+      "Filezilla",
+      "Sublime",
+      "Text",
+      "Putty",
+      "Unity",
+      "SSRS"
+    ]
+  },
+  "PersonalProjectsModel": [
+    {
+      "ProjectName": "PeterMeinders.com (Blazor and ReactJS)",
+      "ProjectDescription": "",
+      "ProjectLink": "Petermeinders.com"
+    },
+    {
+      "ProjectName": "The Construct (VR, C#, Unity)",
+      "ProjectDescription": "",
+      "ProjectLink": "https://www.youtube.com/watch?v=G_0xmZd0tiE&ab_channel=Peter"
+    },
+    {
+      "ProjectName": "VSCodeBlocks (Typescript, Svelte)",
+      "ProjectDescription": "",
+      "ProjectLink": "https://github.com/Petermeinders/VSCodeBlocks"
+    }
+  ]
+
+}

@@ -1,0 +1,79 @@
+﻿
+
+<div class="row main-row">
+
+    <div class="overview-card col-12 col-xl-12">
+        <div class="card mt-card-top communication-preferences">
+            <div class="card-title">
+                <div class="row card-title-header">
+                    <div class="col-12 col-md-9">
+                        <h3>@ExperienceModel.Header</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-12">
+                        <div class="no-padd">@ExperienceModel.SubHeader</div>
+                    </div>
+                </div>
+            </div>
+            <!---->
+            <div class="card-body card-body-margin">
+
+            @foreach(var point in ExperienceModel.BulletPoints)
+            {
+                <div class="row">
+                    <div class="col-12 no-padd label">- @point </div>
+                </div>     
+            }
+               @*
+                <div class="row">
+                    <div class="col-12 no-padd label">- Built and implemented a chatbot using LUIS and Microsoft Bot Framework into our service desk environment</div>
+                </div>
+                <div class="row">
+                    <div class="col-12 no-padd label">- Created a scheduling webapp for new patients to schedule appointments</div>
+                </div>
+                <div class="row">
+                    <div class="col-12 no-padd label">- Developed numerous code fixes and features in our EMR software for both the windows application, and web based portal</div>
+                </div>
+                <div class="row">
+                    <div class="col-12 no-padd label">
+                        - Worked with a team to create a student tracking webapp using MVC that would help teachers keep track of students that are falling behind and needing extra support in certain areas
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 no-padd label">
+                        - Added a QR reading feature to a LiftTruck tracking Android application and redeployed it to the store
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 no-padd label">
+                        - Wrote a VBA/Excel based sports field calculation software that rendered an accurately scaled layout of the field that the sales team would show potential customers
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 no-padd label">
+                        - Designed new user screens using XAML and C# in WPF
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 no-padd label">- Created reports using SSRS 2005</div>
+                </div>
+                <div class="row">
+                    <div class="col-12 no-padd label">- Designed stored procedures in SQL Server</div>
+                </div>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    [Parameter]
+    public ExperienceModel ExperienceModel { get; set; } = new ExperienceModel();
+
+    //[Parameter]
+    //public TItem2 NewItem { get; set; }
+
+    //[Parameter]
+    //public RenderFragment<TItem> ChildContent { get; set; }
+}

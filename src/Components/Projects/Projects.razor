@@ -1,0 +1,9 @@
+﻿@foreach(var project in ProjectList)
+{
+<h3>Project</h3>
+}
+
+@code {
+    [Parameter]
+    public PersonalProjectsModel[] ProjectList { get; set; }
+}

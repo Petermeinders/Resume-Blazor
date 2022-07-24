@@ -1,10 +1,21 @@
 ﻿@page "/knowledge"
+@using Resume_Blazor.Components.Skills
+@using System.Text.Json;
+@using Newtonsoft.Json
+@using System.Text.Json.Serialization;
+@inject HttpClient Http
 
-<section class="section-page">
+@if (Resume == null)
+{
+    <div>Loading...</div>
+}
+else
+{
+  <section class="section-page">
    <div class="main-section">
       <div class="container-fluid main-container" >
          <div class="text-center">
-            <h1>Knowledge</h1>
+            <h1>Skills</h1>
          </div>
          <div class="row">
             <!-- FIRST MAIN ROW -->
@@ -32,29 +43,11 @@
                            <div class="row">
                               <hr class="mt-4">
                            </div>
-                           <div class="row mt-3">
-                              <div class="col-12 no-padd">Frameworks/Libraries/Markup</div>
-                              <div class="col-12 col-md-9 mt-1 no-padd label">C#(Winforms, Webforms, MVC, WPF, Blazor, .Net Core), Java, VBA, SQL, Typescript, LINQ, ASP.NET, Entity Framework, XAML, HTML, CSS, JSON, XML, Powershell, Lucene, Vue, Svelte, React
-                              </div>
-                              <div class="col-md-3 cp-selection">
-                                 <span class="right-icon">
-                                 <i class="icon-certificate"></i>
-                                 </span>
-                              </div>
-                           </div>
+                          <Skills SkillsList="@Resume?.SkillsModel?.Skills"/>
                            <div class="row">
                               <hr class="mt-4">
                            </div>
-                           <div class="row">
-                              <div class="col-12 no-padd">Tools/Utilites</div>
-                              <div class="col-12 col-md-9 mt-1 no-padd label">
-                                  Visual Studio 2013-2022, VSCode, Kentico, IIS, Postman, AWS Elastic BeanStalk, Github, Github Actions, Azure, ServiceNow, cPanel, Vmware/Virtualbox/HyperV, Filezilla, Sublime Text, Putty, Unity, SSRS 2005
-                              </div>
-                              <div class="col-md-3 cp-selection"><span  class="right-icon" >
-                                 <i class="icon-certificate"></i>
-                                 </span>
-                              </div>
-                           </div>
+                          <Tools ToolsList="@Resume?.SkillsModel?.Tools"/>
                         </div>
                      </div>
                   </div>
@@ -64,16 +57,40 @@
          </div>
       </div>
    </div>
-</section>
+</section>  
+}
+
+
 <link href="../css/custom.css" rel="stylesheet"/>
 
 @code {
     private int currentCount = 0;
+    string fileName = "Resume.json";
+    public ResumeModel Resume = new ResumeModel();
 
-    private void IncrementCount()
+
+    protected override async Task OnInitializedAsync()
     {
-        currentCount++;
+        Resume = await GetResume();
     }
+
+
+
+    public async Task<ResumeModel> GetResume()
+    {
+        var res = await Http.GetAsync(fileName);
+
+        var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
+        ResumeModel val = await res.Content.ReadFromJsonAsync<ResumeModel>(options);
+
+        return val;
+    }
+
+
 }
 
 
