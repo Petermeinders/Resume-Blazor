@@ -2,8 +2,21 @@
 
   "ExperienceModel": [
     {
+      "Header": "Sr. Developer",
+      "SubHeader": "Novus Media  |  2022 - present",
+      "CompanyName": "",
+      "StartDate": "",
+      "EndDate": "",
+      "BulletPoints": [
+        "Managed 12 web applications and provided improvements and bug fixes as needed.",
+        "Redesigned integration of financial pipeline to Netsuite and updated documentation on process.",
+        "Worked and debugged Azure Service Bus and NServiceBus to provide messaging between systems.",
+        "Leveraged the Power Platform to help reduce complex low level code integrations."
+      ]
+    },
+    {
       "Header": "Sr. Systems Engineer",
-      "SubHeader": "Shaw Industries  |  2020 - PRESENT",
+      "SubHeader": "Shaw Industries  |  2020 - 2022",
       "CompanyName": "",
       "StartDate": "",
       "EndDate": "",
