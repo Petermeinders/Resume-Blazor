@@ -1,0 +1,232 @@
+@using System.ComponentModel.DataAnnotations
+@using Resume_Blazor.Models @* Add this line to reference the new model namespace *@
+
+@* Link to a custom CSS file, ensure you have one in your wwwroot/css folder *@
+<link href="../css/custom.css" rel="stylesheet" />
+
+@* Added inline style for sortable header hover effect.
+   Ideally, these styles would be placed in your custom.css file. *@
+<style>
+    .sortable-header {
+        transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effects */
+    }
+    .sortable-header:hover {
+        background-color: rgba(255, 255, 255, 0.1); /* Light background on hover */
+        cursor: pointer; /* Ensure pointer cursor is visible */
+        color: #add8e6; /* Lighter text color on hover */
+    }
+</style>
+
+<h3 style="text-align: center;">Peter's CRUDTable</h3>
+
+<div class="col-12 row" style="justify-content: center;">
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+<input type="text" @bind="filterText" placeholder="Filter..." class="form-control mb-2" />
+
+<table class="table table-striped" style="color:white;">
+    <thead>
+        <tr>
+            @* Name Column Header with Sort Indicator and Hover Effect *@
+            <th @onclick="() => SortBy(nameof(Item.Name))" class="sortable-header">
+                Name
+                @if (sortColumn == nameof(Item.Name))
+                {
+                    <span class="ml-1">@(sortAscending ? "▲" : "▼")</span>
+                }
+            </th>
+            @* Age Column Header with Sort Indicator and Hover Effect *@
+            <th @onclick="() => SortBy(nameof(Item.Age))" class="sortable-header">
+                Age
+                @if (sortColumn == nameof(Item.Age))
+                {
+                    <span class="ml-1">@(sortAscending ? "▲" : "▼")</span>
+                }
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in FilteredAndSortedItems)
+        {
+            <tr>
+                @if (editItemId == item.Id)
+                {
+                    <!-- Display input fields for editing within the same row -->
+                    <td><input @bind="editItem!.Name" class="form-control" /></td>
+                    <td><input type="number" @bind="editItem!.Age" class="form-control" /></td>
+                    <td>
+                        <button class="btn btn-success btn-sm" @onclick="SaveEdit">Save</button>
+                        <button class="btn btn-secondary btn-sm" @onclick="CancelEdit">Cancel</button>
+                    </td>
+                }
+                else
+                {
+                    <!-- Display read-only text for the row -->
+                    <td>@item.Name</td>
+                    <td>@item.Age</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" @onclick="() => EditItem(item)">Edit</button>
+                        <button class="btn btn-danger btn-sm" @onclick="() => DeleteItem(item)">Delete</button>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Add New Item</h3>
+<div class="form-inline">
+    <input @bind="newItem.Name" class="form-control mr-2" placeholder="Name" />
+    <input type="number" @bind="newItem.Age" class="form-control mr-2" placeholder="Age" />
+    <button class="btn btn-success" @onclick="AddItem">Add</button>
+</div>
+    </div>
+</div>
+
+
+
+@code {
+    @* Assuming a basic Item model like this. If you have a more complex one in Resume_Blazor.Models, it will be used instead. *@
+    public class Item
+    {
+        public Guid Id { get; set; } = Guid.NewGuid();
+        [Required]
+        public string Name { get; set; } = string.Empty;
+        [Range(0, 150)]
+        public int Age { get; set; }
+
+        // Method to clone the item for editing
+        public Item Clone()
+        {
+            return new Item { Id = this.Id, Name = this.Name, Age = this.Age };
+        }
+    }
+
+    // The main list of items displayed in the table
+    private List<Item> items = new()
+    {
+        new Item { Name = "Alice", Age = 30 },
+        new Item { Name = "Bob", Age = 25 },
+        new Item { Name = "Charlie", Age = 35 },
+        new Item { Name = "David", Age = 20 }
+    };
+
+    // Model for adding new items
+    private Item newItem = new();
+    // Holds the item being edited (a clone of the original)
+    private Item? editItem = null;
+    // Stores the ID of the item currently in edit mode
+    private Guid? editItemId = null;
+    // Current column being sorted
+    private string? sortColumn;
+    // Sort direction (ascending or descending)
+    private bool sortAscending = true;
+    // Text for filtering the table
+    private string filterText = string.Empty;
+
+    // Computed property to get items that are filtered and then sorted.
+    private IEnumerable<Item> FilteredAndSortedItems => items
+        .Where(i => string.IsNullOrEmpty(filterText) || i.Name.Contains(filterText, StringComparison.OrdinalIgnoreCase))
+        .AsQueryable(); // Convert to IQueryable to allow further sorting
+
+
+    protected override void OnInitialized()
+    {
+        // Optionally set an initial sort column and direction when the component initializes
+        sortColumn = nameof(Item.Name); // Default sort by Name
+        sortAscending = true;          // Default to ascending
+        SortItems();                   // Apply initial sort
+    }
+
+    // Adds a new item to the list
+    private void AddItem()
+    {
+        if (!string.IsNullOrWhiteSpace(newItem.Name))
+        {
+            newItem.Id = Guid.NewGuid(); // Ensure a new unique ID for the new item
+            items.Add(new Item { Id = newItem.Id, Name = newItem.Name, Age = newItem.Age });
+            newItem = new(); // Reset newItem for the next entry
+            SortItems(); // Re-sort the list after adding a new item
+        }
+    }
+
+    // Initiates the edit mode for a given item
+    private void EditItem(Item item)
+    {
+        editItemId = item.Id; // Set the ID of the item to be edited
+        editItem = item.Clone(); // Create a clone to work with, leaving the original item untouched
+    }
+
+    // Saves the changes made in edit mode
+    private void SaveEdit()
+    {
+        if (editItem != null && editItemId.HasValue)
+        {
+            // Find the original item in the 'items' list by its ID
+            var existingItem = items.FirstOrDefault(i => i.Id == editItemId);
+            if (existingItem != null)
+            {
+                // Update the original item's properties with the values from the cloned editItem
+                existingItem.Name = editItem.Name;
+                existingItem.Age = editItem.Age;
+            }
+            editItem = null; // Clear the editItem
+            editItemId = null; // Clear the editItemId, exiting edit mode
+            SortItems(); // Re-sort the list after saving changes
+        }
+    }
+
+    // Cancels the edit operation, discarding changes
+    private void CancelEdit()
+    {
+        editItem = null; // Clear the editItem
+        editItemId = null; // Clear the editItemId, exiting edit mode
+    }
+
+    // Deletes an item from the list
+    private void DeleteItem(Item item)
+    {
+        items.Remove(item); // Remove the item
+        SortItems(); // Re-sort the list after deletion
+    }
+
+    // Handles sorting the table by a specified column
+    private void SortBy(string column)
+    {
+        if (sortColumn == column)
+        {
+            sortAscending = !sortAscending; // Toggle sort direction if same column is clicked
+        }
+        else
+        {
+            sortColumn = column; // Set new sort column
+            sortAscending = true; // Default to ascending for a new column
+        }
+        SortItems(); // Apply the sorting
+    }
+
+    // Helper method to apply sorting to the 'items' list
+    private void SortItems()
+    {
+        if (string.IsNullOrEmpty(sortColumn)) return;
+
+        IEnumerable<Item> sortedItems = Enumerable.Empty<Item>();
+
+        switch (sortColumn)
+        {
+            case nameof(Item.Name):
+                sortedItems = sortAscending ? items.OrderBy(i => i.Name) : items.OrderByDescending(i => i.Name);
+                break;
+            case nameof(Item.Age):
+                sortedItems = sortAscending ? items.OrderBy(i => i.Age) : items.OrderByDescending(i => i.Age);
+                break;
+            default:
+                // If sortColumn is not recognized, maintain current order or default
+                sortedItems = items;
+                break;
+        }
+
+        // Reassign the 'items' list with the newly sorted collection
+        items = sortedItems.ToList();
+    }
+}

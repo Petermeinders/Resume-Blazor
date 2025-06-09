@@ -19,7 +19,11 @@ h4 {
 }
 
 .table-color {
-	background-color: #1b548040 !important;
+	background-color: white !important;
+}
+
+.table {
+	color:white !important;
 }
 
 body {
@@ -36,7 +40,7 @@ h2 {
 
 h3 {
 	font-size: 20px;
-	color: #fff;
+	color: #fff ;
 }
 
 p {
@@ -549,6 +553,8 @@ a.card-header-link {
 		padding-left:0px;
 	}
 }
+
+
 
 
 
