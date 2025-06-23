@@ -1,4 +1,4 @@
-- name: Replace Firebase Config Placeholders
+ name: Replace Firebase Config Placeholders
   run: |
     sed -i 's|ApiKey|${{ secrets.ApiKey }}|g' src/wwwroot/appsettings.json
     sed -i 's|AuthDomain|${{ secrets.AuthDomain }}|g' src/wwwroot/appsettings.json
@@ -10,5 +10,5 @@
   shell: bash
 
 # Add your dotnet build or publish step after this replacement step
-- name: .NET Publish
+ name: .NET Publish
   run: dotnet publish src/Resume-Blazor.csproj -c Release -o release --no-restore
