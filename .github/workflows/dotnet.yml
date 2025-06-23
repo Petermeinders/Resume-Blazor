@@ -28,13 +28,13 @@ jobs:
       # Your step to replace Firebase Config Placeholders
       - name: Replace Firebase Config Placeholders
         run: |
-          sed -i 's|ApiKey1|${{ secrets.ApiKey }}|g' src/wwwroot/appsettings.json
-          sed -i 's|AuthDomain1|${{ secrets.AuthDomain }}|g' src/wwwroot/appsettings.json
-          sed -i 's|ProjectId1|${{ secrets.ProjectId }}|g' src/wwwroot/appsettings.json
-          sed -i 's|StorageBucket1|${{ secrets.StorageBucket }}|g' src/wwwroot/appsettings.json
-          sed -i 's|MessagingSenderId1|${{ secrets.MessagingSenderId }}|g' src/wwwroot/appsettings.json
-          sed -i 's|AppId1|${{ secrets.AppId }}|g' src/wwwroot/appsettings.json
-          sed -i 's|MeasurementId1|${{ secrets.MeasurementId }}|g' src/wwwroot/appsettings.json
+          sed -i 's|apiKey|${{ secrets.ApiKey }}|g' src/wwwroot/appsettings.json
+          sed -i 's|authDomain|${{ secrets.AuthDomain }}|g' src/wwwroot/appsettings.json
+          sed -i 's|projectId|${{ secrets.ProjectId }}|g' src/wwwroot/appsettings.json
+          sed -i 's|storageBucket|${{ secrets.StorageBucket }}|g' src/wwwroot/appsettings.json
+          sed -i 's|messagingSenderId|${{ secrets.MessagingSenderId }}|g' src/wwwroot/appsettings.json
+          sed -i 's|appId|${{ secrets.AppId }}|g' src/wwwroot/appsettings.json
+          sed -i 's|measurementId|${{ secrets.MeasurementId }}|g' src/wwwroot/appsettings.json
         shell: bash
 
   # Your .NET Publish step
