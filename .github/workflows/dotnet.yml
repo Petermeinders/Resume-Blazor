@@ -1,14 +1,14 @@
 - name: Replace Firebase Config Placeholders
-        run: |
-          sed -i 's|__FIREBASE_API_KEY__|${{ secrets.FIREBASE_API_KEY }}|g' src/wwwroot/appsettings.json
-          sed -i 's|__FIREBASE_AUTH_DOMAIN__|${{ secrets.FIREBASE_AUTH_DOMAIN }}|g' src/wwwroot/appsettings.json
-          sed -i 's|__FIREBASE_PROJECT_ID__|${{ secrets.FIREBASE_PROJECT_ID }}|g' src/wwwroot/appsettings.json
-          sed -i 's|__FIREBASE_STORAGE_BUCKET__|${{ secrets.FIREBASE_STORAGE_BUCKET }}|g' src/wwwroot/appsettings.json
-          sed -i 's|__FIREBASE_MESSAGING_SENDER_ID__|${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}|g' src/wwwroot/appsettings.json
-          sed -i 's|__FIREBASE_APP_ID__|${{ secrets.FIREBASE_APP_ID }}|g' src/wwwroot/appsettings.json
-          sed -i 's|__FIREBASE_MEASUREMENT_ID__|${{ secrets.FIREBASE_MEASUREMENT_ID }}|g' src/wwwroot/appsettings.json
-        shell: bash # Specify the shell for the sed command
+  run: |
+    sed -i 's|ApiKey|${{ secrets.ApiKey }}|g' src/wwwroot/appsettings.json
+    sed -i 's|AuthDomain|${{ secrets.AuthDomain }}|g' src/wwwroot/appsettings.json
+    sed -i 's|ProjectId|${{ secrets.ProjectId }}|g' src/wwwroot/appsettings.json
+    sed -i 's|StorageBucket|${{ secrets.StorageBucket }}|g' src/wwwroot/appsettings.json
+    sed -i 's|MessagingSenderId|${{ secrets.MessagingSenderId }}|g' src/wwwroot/appsettings.json
+    sed -i 's|AppId|${{ secrets.AppId }}|g' src/wwwroot/appsettings.json
+    sed -i 's|MeasurementId|${{ secrets.MeasurementId }}|g' src/wwwroot/appsettings.json
+  shell: bash
 
-      # Add your dotnet build or publish step after this replacement step
-      - name: .NET Publish
-        run: dotnet publish src/Resume-Blazor.csproj -c Release -o release --no-restore
+# Add your dotnet build or publish step after this replacement step
+- name: .NET Publish
+  run: dotnet publish src/Resume-Blazor.csproj -c Release -o release --no-restore
