@@ -25,7 +25,7 @@ namespace Resume_Blazor
             builder.Services.AddBlazoredToast();
 
             // Get Firebase configuration from appsettings.json
-            var firebaseConfig = builder.Configuration.GetSection("FirebaseConfig").Get<FirebaseConfig>();
+            //var firebaseConfig = builder.Configuration.GetSection("FirebaseConfig").Get<FirebaseConfig>();
 
             // Pass Firebase configuration to JavaScript
             builder.Services.AddSingleton(firebaseConfig); // Register as a service
