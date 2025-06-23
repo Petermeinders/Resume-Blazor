@@ -20,6 +20,11 @@ jobs:
         with:
           dotnet-version: 8.0.x # Or your target .NET version
 
+                # **Add a NuGet package restore step**
+      - name: Restore NuGet packages
+        run: dotnet restore src/Resume-Blazor.csproj # Specify the path to your project file
+
+
       # Your step to replace Firebase Config Placeholders
       - name: Replace Firebase Config Placeholders
         run: |
