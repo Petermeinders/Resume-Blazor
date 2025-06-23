@@ -25,15 +25,15 @@ jobs:
         run: dotnet restore src/Resume-Blazor.csproj # Specify the path to your project file
 
       - name: Debug - Print Environment Variables
-            run: |
-              echo "Firebase API Key: ${{ vars.__FIREBASE_API_KEY__ }}"
-              echo "Auth Domain: ${{ vars.AUTHDOMAIN }}"
-              echo "Project ID: ${{ vars.PROJECTID }}"
-              echo "Storage Bucket: ${{ vars.STORAGEBUCKET }}"
-              echo "Messaging Sender ID: ${{ vars.MESSAGINGSENDERID }}"
-              echo "App ID: ${{ vars.__FIREBASE_AUTH_DOMAIN__ }}"
-              echo "Measurement ID: ${{ vars.MEASUREMENTID }}"
-            shell: bash
+        run: |
+          echo "Firebase API Key: ${{ vars.__FIREBASE_API_KEY__ }}"
+          echo "Auth Domain: ${{ vars.AUTHDOMAIN }}"
+          echo "Project ID: ${{ vars.PROJECTID }}"
+          echo "Storage Bucket: ${{ vars.STORAGEBUCKET }}"
+          echo "Messaging Sender ID: ${{ vars.MESSAGINGSENDERID }}"
+          echo "App ID: ${{ vars.__FIREBASE_AUTH_DOMAIN__ }}"
+          echo "Measurement ID: ${{ vars.MEASUREMENTID }}"
+        shell: bash
 
 
       # Your step to replace Firebase Config Placeholders
