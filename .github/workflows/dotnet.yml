@@ -42,3 +42,12 @@ jobs:
         run: dotnet publish src/Resume-Blazor.csproj -c Release -o release --no-restore
 
       # Add other steps as needed (e.g., deployment)
+
+       # **Add the GitHub Pages deployment step**
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # Provided by GitHub Actions
+          publish_dir: ./release # The directory containing your published Blazor app
+          publish_branch: gh-pages # The branch you configured GitHub Pages to serve from
+          # cname: your-custom-domain.com # Uncomment and set if you use a custom domain
