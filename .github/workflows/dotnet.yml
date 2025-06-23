@@ -28,13 +28,13 @@ jobs:
       # Your step to replace Firebase Config Placeholders
       - name: Replace Firebase Config Placeholders
         run: |
-          sed -i 's|apiKey|${{ vars.ApiKey }}|g' src/wwwroot/appsettings.json
-          sed -i 's|authDomain|${{ vars.AuthDomain }}|g' src/wwwroot/appsettings.json
-          sed -i 's|projectId|${{ vars.ProjectId }}|g' src/wwwroot/appsettings.json
-          sed -i 's|storageBucket|${{ vars.StorageBucket }}|g' src/wwwroot/appsettings.json
-          sed -i 's|messagingSenderId|${{ vars.MessagingSenderId }}|g' src/wwwroot/appsettings.json
-          sed -i 's|appId|${{ vars.AppId }}|g' src/wwwroot/appsettings.json
-          sed -i 's|measurementId|${{ vars.MeasurementId }}|g' src/wwwroot/appsettings.json
+          sed -i 's|apiKey|${{ vars.__FIREBASE_API_KEY__ }}|g' src/wwwroot/appsettings.json
+          sed -i 's|authDomain|${{ vars.AUTHDOMAIN }}|g' src/wwwroot/appsettings.json
+          sed -i 's|projectId|${{ vars.PROJECTID }}|g' src/wwwroot/appsettings.json
+          sed -i 's|storageBucket|${{ vars.STORAGEBUCKET }}|g' src/wwwroot/appsettings.json
+          sed -i 's|messagingSenderId|${{ vars.MESSAGINGSENDERID }}|g' src/wwwroot/appsettings.json
+          sed -i 's|appId|${{ vars.__FIREBASE_AUTH_DOMAIN__ }}|g' src/wwwroot/appsettings.json
+          sed -i 's|measurementId|${{ vars.MEASUREMENTID }}|g' src/wwwroot/appsettings.json
         shell: bash
 
   # Your .NET Publish step
