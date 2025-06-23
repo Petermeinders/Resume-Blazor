@@ -38,16 +38,23 @@ jobs:
         shell: bash
 
   # Your .NET Publish step
-      - name: .NET Publish
-        run: dotnet publish src/Resume-Blazor.csproj -c Release -o release --no-restore
+      
+      - name: .NET Publish for GitHub Pages
+        run: dotnet publish src/Resume-Blazor.csproj -c Release -o publish_output --no-restore
 
       # Add other steps as needed (e.g., deployment)
 
-       # **Add the GitHub Pages deployment step**
+       # **Add a step to list files in the publish directory**
+      - name: List Published Files
+        run: |
+          echo "Listing files in ./publish_output/wwwroot:"
+          ls -R ./publish_output/wwwroot # List files and directories recursively
+        shell: bash
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./publish_output/wwwroot # **Deploy the contents of the wwwroot within the publish output**
+          publish_dir: ./publish_output/wwwroot
           publish_branch: gh-pages
           # cname: your-custom-domain.com
