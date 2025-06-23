@@ -26,22 +26,26 @@ namespace Resume_Blazor
 
             // Get Firebase configuration from appsettings.json
             //var firebaseConfig = builder.Configuration.GetSection("FirebaseConfig").Get<FirebaseConfig>();
-
-            // Pass Firebase configuration to JavaScript
-            builder.Services.AddSingleton(firebaseConfig); // Register as a service
-
+            builder.Services.AddSingleton(builder.Configuration.GetSection("FirebaseConfig").Get<FirebaseConfig>());
 
             var host = builder.Build();
 
 
 
                        // After the app is built and running, get the IJSRuntime
-            var jsRuntime = host.Services.GetRequiredService<IJSRuntime>();
-            
-            // Call a JavaScript function to set the Firebase config
+             var jsRuntime = host.Services.GetRequiredService<IJSRuntime>();
+            var firebaseConfig = host.Services.GetRequiredService<FirebaseConfig>(); // Get FirebaseConfig from services
+
+            // Log before calling the JS function
+            Console.WriteLine("Calling setFirebaseConfig JavaScript function...");
+
             await jsRuntime.InvokeVoidAsync("setFirebaseConfig", firebaseConfig);
 
-                        await host.RunAsync();
+            // Log after calling the JS function
+            Console.WriteLine("setFirebaseConfig JavaScript function called.");
+
+
+            await host.RunAsync(); // Run the host
        
         }
     }
