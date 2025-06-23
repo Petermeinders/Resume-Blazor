@@ -18,6 +18,9 @@ namespace Resume_Blazor
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
+            
+            builder.Services.AddSingleton(builder.Configuration.GetSection("FirebaseConfig").Get<FirebaseConfig>());
+
             builder.RootComponents.Add<HeadOutlet>("head::after");
             builder.Services.AddScoped<SwapiService>();
             // Wait for JavaScript interop to be ready
@@ -26,7 +29,6 @@ namespace Resume_Blazor
 
             // Get Firebase configuration from appsettings.json
             //var firebaseConfig = builder.Configuration.GetSection("FirebaseConfig").Get<FirebaseConfig>();
-            builder.Services.AddSingleton(builder.Configuration.GetSection("FirebaseConfig").Get<FirebaseConfig>());
 
             var host = builder.Build();
 
