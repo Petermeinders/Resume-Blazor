@@ -21,8 +21,22 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
+
+    @* **Place Firebase SDK scripts here** *@
+    @* Use the compat library for the namespaced API *@@* Using v9.x.x as an example, adjust version as needed *@
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+    <!-- Add other Firebase products you need here, e.g., database, storage, etc., using the -compat.js suffix -->
+
+    @* **Reference your custom Firebase initialization script here** *@
+    <script src="firebaseInit.js"></script>
+
+    @* Load Blazor script after your custom scripts *@
     <script src="_framework/blazor.webassembly.js"></script>
     <link href="css/blazored-toast.css" rel="stylesheet" />
+
+
 </body>
 
 </html>

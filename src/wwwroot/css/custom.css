@@ -847,4 +847,11 @@ a.card-header-link {
 		transform: skew(3deg);
 	}
 }
+
+.nav-item {
+    color: #FFFFFF;
+}
  
+td {
+    color: white;
+}
