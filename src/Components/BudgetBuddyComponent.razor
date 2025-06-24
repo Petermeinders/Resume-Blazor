@@ -1,14 +1,12 @@
 @implements IDisposable // Implement IDisposable to clean up DotNetObjectReference
 
-<h3>Budget Buddy</h3>
-
 @if (IsUserLoggedIn)
 {
     <p>Welcome, @UserDisplayName!</p>
 
     @* Budget Management UI *@
     <div class="container mt-4">
-        <h4>Your Budget Items</h4>
+        <h4 style="color:white;">Your Budget Items</h4>
 
         <div class="mb-3">
             <input type="text" class="form-control @(string.IsNullOrWhiteSpace(NewItemDescription) && attemptedAdd ? "is-invalid" : "")" @bind="NewItemDescription" placeholder="Item Description" />
@@ -35,22 +33,41 @@
             <table class="table table-striped mt-3">
                 <thead>
                     <tr>
-                        <th>Description</th>
-                        <th>Amount</th>
-                        <th>Actions</th>
+                        <th style="color:white;">Description</th>
+                        <th style="color:white;">Amount</th>
+                        <th style="color:white;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in BudgetItems)
                     {
-                        <tr>
-                            <td>@item.Description</td>
-                            <td>@item.Amount.ToString("C")</td> @* Format as currency *@
+                    @if (EditingItem != null && EditingItem.Id == item.Id)
+                        {
+                            <tr>
+                                <td>
+                                    <input type="text" class="form-control" @bind="EditingItem.Description" />
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control" @bind="EditingItem.Amount" />
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-success" @onclick="SaveEditedItem" disabled="@(!IsFirebaseReady)">Save</button>
+                                    <button class="btn btn-sm btn-secondary" @onclick="CancelEdit" disabled="@(!IsFirebaseReady)">Cancel</button>
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td>@item.Description</td>
+                                <td>@item.Amount.ToString("C")</td> @* Format as currency *@
                             <td>
                                 <button class="btn btn-sm btn-warning" @onclick="() => EditItem(item)" disabled="@(!IsFirebaseReady)">Edit</button> @* Disable until Firebase is ready *@
+
                                 <button class="btn btn-sm btn-danger" @onclick="() => DeleteItem(item)" disabled="@(!IsFirebaseReady)">Delete</button> @* Disable until Firebase is ready *@
                             </td>
                         </tr>
+                        }
                     }
                 </tbody>
             </table>
@@ -80,6 +97,7 @@ else
     private decimal NewItemAmount { get; set; }
     private bool IsFirebaseReady { get; set; } = false;
     private bool attemptedAdd = false; // New flag to track if add was attempted
+    private BudgetItem EditingItem { get; set; } // Item currently being edited
 
 
     // **Create a DotNetObjectReference to this component instance**
@@ -260,21 +278,69 @@ else
 
     private async Task EditItem(BudgetItem item)
     {
-        // TODO: Implement editing a budget item in Firebase
-        Console.WriteLine($"Editing item: {item.Description}");
-        // You'll likely want a form or modal to edit the item
+        EditingItem = item;
+        StateHasChanged(); // Update UI to show edit fields
+    }
+
+    private async Task SaveEditedItem()
+    {
+        if (IsUserLoggedIn && EditingItem != null && !string.IsNullOrWhiteSpace(EditingItem.Id) && !string.IsNullOrWhiteSpace(EditingItem.Description) && EditingItem.Amount > 0)
+        {
+            try
+            {
+                Console.WriteLine($"Saving edited item: {EditingItem.Description}, Amount: {EditingItem.Amount}");
+
+                var userId = await JSRuntime.InvokeAsync<string>("getCurrentUserId");
+                if (!string.IsNullOrWhiteSpace(userId))
+                {
+                    // Call the JavaScript function to update the item in Firestore
+                    var success = await JSRuntime.InvokeAsync<bool>("updateBudgetItem", userId, EditingItem.Id, EditingItem);
+                    if (success)
+                    {
+                        // Update the local item and exit edit mode
+                        var index = BudgetItems.FindIndex(item => item.Id == EditingItem.Id);
+                        if (index != -1)
+                        {
+                            BudgetItems[index] = EditingItem;
+                        }
+                        EditingItem = null; // Exit edit mode
+                        StateHasChanged(); // Update UI
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Error saving edited item: {ex.Message}");
+            }
+        }
     }
 
     private async Task DeleteItem(BudgetItem item)
     {
-        // TODO: Implement deleting a budget item from Firebase
         Console.WriteLine($"Deleting item: {item.Description}");
 
-        // Placeholder for deleting item (replace with actual Firebase logic)
-        BudgetItems.Remove(item);
+        if (IsUserLoggedIn && item != null && !string.IsNullOrWhiteSpace(item.Id))
+        {
+            var userId = await JSRuntime.InvokeAsync<string>("getCurrentUserId");
+            if (!string.IsNullOrWhiteSpace(userId))
+            {
+                // Call the JavaScript function to delete the item from Firestore
+                var success = await JSRuntime.InvokeAsync<bool>("deleteBudgetItem", userId, item.Id);
+                if (success)
+                {
+                    // If deletion is successful in Firebase, remove it from the local list
+                    BudgetItems.Remove(item);
+                    StateHasChanged(); // Update UI after removing
+                }
+            }
+        }
 
-        // Reload items (or update the list directly)
-        await LoadBudgetItems();
+    }
+
+    private void CancelEdit()
+    {
+        EditingItem = null; // Exit edit mode without saving
+        StateHasChanged(); // Update UI
     }
 
     public class BudgetItem

@@ -166,6 +166,29 @@ window.setFirebaseConfig = (config) => {
             }
         };
 
+        window.deleteBudgetItem = async (userId, itemId) => {
+            try {
+              await firebase.firestore().collection('users').doc(userId).collection('budgetItems').doc(itemId).delete();
+              console.log("Document successfully deleted!");
+              return true; // Indicate success
+            } catch (error) {
+              console.error("Error removing document: ", error);
+              return false; // Indicate failure
+            }
+        }
+
+        // In your wwwroot/firebaseInit.js or similar
+
+        window.updateBudgetItem = async (userId, itemId, updatedItem) => {
+            try {
+            await firebase.firestore().collection('users').doc(userId).collection('budgetItems').doc(itemId).update(updatedItem);
+            console.log("Document successfully updated!");
+            return true; // Indicate success
+            } catch (error) {
+            console.error("Error updating document: ", error);
+            return false; // Indicate failure
+            }
+        }
 
     } else {
         console.error("Firebase config not set by Blazor. Cannot initialize Firebase.");
